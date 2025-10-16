@@ -1,0 +1,820 @@
+<!doctype html>
+<html>
+<head>
+    <title>VeloLux</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            background-color: #0f0f1a;
+            color: #f0f0f0;
+        }
+
+        body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(15, 15, 26, 0.9)), url("Bike background image7.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Header styling */
+        #div1 {
+            width: 100vw;
+            height: 60px;
+            background-color: rgba(20, 20, 30, 0.9);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid #ff073a;
+        }
+
+        #but {
+            background-color: transparent;
+            border: 2px solid #ff073a;
+            color: #ff073a;
+            border-radius: 20px;
+            padding: 5px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            text-shadow: 0 0 5px #ff073a;
+            box-shadow: 0 0 10px #c4173a;
+        }
+
+        #but:hover {
+            background-color: #ff073a;
+            color: #0f0f1a;
+            box-shadow: 0 0 15px #ff073a;
+            transform: scale(1.05);
+        }
+
+        /* Sidebar menu */
+        #div789 {
+            width: 300px;
+            height: 100vh;
+            background-color: rgba(20, 20, 30, 0.98);
+            position: fixed;
+            top: 0;
+            left: -300px;
+            transition: left 0.5s ease;
+            z-index: 100;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 5px 0 20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            border-right: 2px solid #ff073a;
+        }
+
+        #div789.act {
+            left: 0;
+        }
+
+        #div789 h3 {
+            text-align: center;
+            color: #ff073a;
+            font-size: 24px;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 7, 58, 0.3);
+            text-shadow: 0 0 10px #ff073a;
+        }
+
+        #b1, #b2, #b3, #b4, #b5 {
+            width: 100%;
+            height: 50px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            color: #f0f0f0;
+            font-weight: bold;
+            text-align: left;
+            padding-left: 20px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #b1:hover, #b2:hover, #b3:hover, #b4:hover, #b5:hover {
+            background-color: rgba(255, 7, 58, 0.1);
+            color: #ff073a;
+            padding-left: 30px;
+            text-shadow: 0 0 8px #ff073a;
+        }
+
+        #b6 {
+            width: 50px;
+            height: 50px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            color: #f0f0f0;
+            font-weight: bolder;
+            font-size: 30px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        #b6:hover {
+            color: #ff073a;
+            transform: rotate(180deg);
+            text-shadow: 0 0 8px #ff073a;
+        }
+
+        /* Navigation links */
+        .nav-link {
+            color: #f0f0f0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 0 5px;
+        }
+
+        .nav-link:hover {
+            color: #ff073a;
+            background-color: rgba(0, 243, 255, 0.1);
+            text-shadow: 0 0 8px #ff073a;
+        }
+
+        .logo {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s ease;
+            margin-left: 20px;
+        }
+
+        .logo:hover {
+            transform: rotate(15deg);
+        }
+
+        /* Bike cards */
+        .bike-card {
+            background-color: rgba(30, 30, 40, 0.8);
+            width: 300px;
+            height: 350px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .bike-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4), 0 0 15px #ff073a;
+            border-color: #ff073a;
+        }
+
+        .bike-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .bike-card p {
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 5px;
+        }
+
+        .bike-name {
+            font-size: 18px;
+            font-weight: bolder;
+            margin-top: 10px;
+        }
+
+        .bike-price {
+            font-weight: bolder;
+            color: #00ff7f;
+            text-shadow: 0 0 5px rgba(0, 255, 127, 0.5);
+        }
+
+        /* Buttons */
+        .buy-btn {
+            background-color: rgba(13, 13, 124, 0.8);
+            text-align: center;
+            color: white;
+            border-radius: 5px;
+            width: 100px;
+            height: 30px;
+            border: 1px solid transparent;
+            margin-left: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .buy-btn:hover {
+            border: 1px solid rgba(13, 13, 124, 1);
+            background-color: transparent;
+            color: #00f3ff;
+            box-shadow: 0 0 10px rgba(13, 13, 124, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .cart-btn {
+            background-color: rgba(0, 128, 0, 0.8);
+            text-align: center;
+            color: white;
+            border-radius: 5px;
+            width: 100px;
+            height: 30px;
+            border: 1px solid transparent;
+            margin-left: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cart-btn:hover {
+            border: 1px solid rgba(0, 128, 0, 1);
+            background-color: transparent;
+            color: #00ff7f;
+            box-shadow: 0 0 10px rgba(0, 128, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Layout for bike cards */
+        .bikes-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            width: 1000px;
+            margin: 80px auto 50px auto;
+            padding: 20px;
+        }
+
+        /* Cart styling */
+        #ban {
+            width: 500px;
+            height: 470px;
+            background-color: rgba(20, 20, 30, 0.95);
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+            border: 2px solid #ff073a;
+            display: none;
+        }
+
+        #reign {
+            width: 480px;
+            height: 300px;
+            background-color: rgba(30, 30, 40, 0.8);
+            margin-left: 10px;
+            border: 1px double rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            overflow: scroll;
+            overflow-x: hidden;
+        }
+
+        #top {
+            width: 480px;
+            height: 45px;
+            background-color: rgba(20, 20, 30, 0.9);
+            margin-left: 10px;
+            border: 1px double rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            margin-top: 5px;
+            font-size: xx-large;
+            padding: 0px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-item {
+            width: 470px;
+            height: 40px;
+            background-color: rgba(30, 30, 40, 0.8);
+            border: 1px double rgba(255, 255, 255, 0.2);
+            display: none;
+            align-items: center;
+            color: white;
+        }
+
+        .plus, .min {
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background-color: rgba(40, 40, 50, 0.8);
+            color: white;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .plus:hover, .min:hover {
+            background-color: rgba(0, 243, 255, 0.3);
+            border-color: #00f3ff;
+        }
+
+        .quan {
+            width: 30px;
+            height: 18px;
+            margin: 0 10px;
+            text-align: center;
+            background-color: rgba(30, 30, 40, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 3px;
+        }
+
+        .cart-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            gap: 20px;
+        }
+
+        .cart-action-btn {
+            background-color: rgba(0, 128, 0, 0.8);
+            text-align: center;
+            color: white;
+            border-radius: 5px;
+            width: 100px;
+            height: 30px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cart-action-btn:hover {
+            background-color: transparent;
+            border: 1px solid #00ff7f;
+            color: #00ff7f;
+            box-shadow: 0 0 10px rgba(0, 255, 127, 0.3);
+        }
+
+        /* UPI Payment styling */
+        #upi {
+            width: 400px;
+            height: 330px;
+            background-color: rgba(20, 20, 30, 0.95);
+            position: fixed;
+            bottom: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 12;
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+            display: none;
+            border: 2px solid #00f3ff;
+            color: white;
+            padding: 10px;
+        }
+
+        #utop {
+            width: 100%;
+            height: 50px;
+            background-color: rgba(30, 30, 40, 0.8);
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            margin-left: -10px;
+        }
+
+        #subs, #cl1 {
+            width: 80px;
+            height: 30px;
+            background-color: rgba(0, 128, 0, 0.8);
+            border: 1px transparent solid;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+         #cl1 {
+            margin-left: 30px;
+         }
+
+        #subs {
+            margin-left: 110px;
+        }
+
+        #subs:hover, #cl1:hover {
+            background-color: transparent;
+            border: 1px solid #00ff7f;
+            color: #00ff7f;
+            box-shadow: 0 0 10px rgba(0, 255, 127, 0.3);
+        }
+
+        .reds {
+            color: #ff073a;
+            margin-left: 20px;
+            height: 10px;
+            text-shadow: 0 0 5px rgba(255, 7, 58, 0.5);
+        }
+
+        input[type="text"], input[type="password"] {
+            background-color: rgba(30, 30, 40, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            color: white;
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            outline: none;
+            border-color: #00f3ff;
+            box-shadow: 0 0 8px rgba(0, 243, 255, 0.3);
+        }
+
+        /* Shopping cart icon */
+        .sop2 {
+            font-size: x-large;
+            text-decoration: none;
+            color: #ff073a;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px #ff073a;
+        }
+
+        .sop2:hover {
+            font-size: xx-large;
+            transform: translateY(-2px);
+            text-shadow: 0 0 10px #ff073a;
+        }
+
+            #div31, #div4, #div5, #div6, #div7 {
+                margin-left: 50px;
+            }
+
+            #div3 {
+                margin-left: 470px;
+            }
+
+
+        /* Responsive adjustments */
+        @media (max-width: 1100px) {
+            .bikes-container {
+                grid-template-columns: repeat(2, 1fr);
+                width: 700px;
+            }
+        }
+
+        @media (max-width: 750px) {
+            .bikes-container {
+                grid-template-columns: 1fr;
+                width: 350px;
+            }
+            
+            #div3, #div31, #div4, #div5, #div6, #div7 {
+                display: none;
+            }
+        }
+
+        /* Animation for menu items */
+        @keyframes neonPulse {
+            0% { text-shadow: 0 0 5px #ff073a; }
+            50% { text-shadow: 0 0 15px #ff073a, 0 0 20px #ff073a; }
+            100% { text-shadow: 0 0 5px #ff073a; }
+        }
+
+        #div789 h3 {
+            animation: neonPulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="div789">
+        <h3>VeloLux</h3>
+        <button id="b1" onclick="window.location.href='Bike home.html';">Home</button>
+        <button id="b2" onclick="window.location.href='bike about us.html';">About Us</button>
+        <button id="b3" onclick="window.location.href='Bike types.html';">Bikes</button>
+        <button id="b4" onclick="window.location.href='bike contact.html';">Contact</button>
+        <button id="b5" onclick="window.location.href='bikes login.html';">Login</button>
+        <button id="b6" onclick="bar()">×</button>
+    </div>
+
+    <div id="div1">
+        <button id="but" onclick="Menu()">☰ Menu</button>
+        <div id="div2">
+            <img src="bogo1.jpeg" class="logo" alt="VeloLux Logo">
+        </div>
+        <div id="div3">
+            <a onclick="sc0()" class="sop2">🛒</a>
+        </div>
+        <div id="div31">
+            <a href="Bike home.html" class="nav-link">Home</a>
+        </div>
+        <div id="div4">
+            <a href="bike about us.html" class="nav-link">About Us</a>
+        </div>
+        <div id="div5">
+            <a href="Bike types.html" class="nav-link">Bikes</a>
+        </div>
+        <div id="div6">
+            <a href="bike contact.html" class="nav-link">Contact</a>
+        </div>
+        <div id="div7">
+            <a href="bikes login.html" class="nav-link">Login</a>
+        </div>
+    </div>
+
+    <div class="bikes-container">
+        <div class="bike-card" id="div20">
+            <img src="bikes types1.jpeg" alt="Royal Enfield Interceptor 650">
+            <p class="bike-name">Royal Enfield Interceptor 650</p>
+            <p>Mileage: 25 kmpl</p>
+            <p class="bike-price" id="bike1">Price: Rs 3,10,000</p>
+            <button class="buy-btn" onclick="sc1()">Buy</button>
+            <button class="cart-btn" onclick="show('ca1','qun1')">Add to cart</button>
+        </div>
+        
+        <div class="bike-card" id="div21">
+            <img src="bikes types2.jpeg" alt="Kawasaki Z650">
+            <p class="bike-name">Kawasaki Z650</p>
+            <p>Mileage: 20-25 kmpl</p>
+            <p class="bike-price" id="bike2">Price: Rs 6,50,000</p>
+            <button class="buy-btn" onclick="sc1()">Buy</button>
+            <button class="cart-btn" onclick="show('ca2','qun2')">Add to cart</button>
+        </div>
+        
+        <div class="bike-card" id="div22">
+            <img src="bikes types3.jpeg" alt="TVS Apache RR 310">
+            <p class="bike-name">TVS Apache RR 310</p>
+            <p>Mileage: 30-35 kmpl</p>
+            <p class="bike-price" id="bike3">Price: Rs 2,40,000</p>
+            <button class="buy-btn" onclick="sc1()">Buy</button>
+            <button class="cart-btn" onclick="show('ca3','qun3')">Add to cart</button>
+        </div>
+        
+        <div class="bike-card" id="div23">
+            <img src="bikes types4.jpeg" alt="Bajaj Pulsar NS200">
+            <p class="bike-name">Bajaj Pulsar NS200</p>
+            <p>Mileage: 35-40 kmpl</p>
+            <p class="bike-price" id="bike4">Price: Rs 1,40,000</p>
+            <button class="buy-btn" onclick="sc1()">Buy</button>
+            <button class="cart-btn" onclick="show('ca4','qun4')">Add to cart</button>
+        </div>
+        
+        <div class="bike-card" id="div24">
+            <img src="bikes types5.jpeg" alt="Honda CB300R">
+            <p class="bike-name">Honda CB300R</p>
+            <p>Mileage: 30-35 kmpl</p>
+            <p class="bike-price" id="bike5">Price: Rs 2,50,000</p>
+            <button class="buy-btn" onclick="sc1()">Buy</button>
+            <button class="cart-btn" onclick="show('ca5','qun5')">Add to cart</button>
+        </div>
+        
+        <div class="bike-card" id="div25">
+            <img src="bikes types10.jpeg" alt="Yamaha FZ-S">
+            <p class="bike-name">Yamaha FZ-S</p>
+            <p>Mileage: 45-50 kmpl</p>
+            <p class="bike-price" id="bike6">Price: Rs 1,16,000</p>
+            <button class="buy-btn" onclick="sc1()">Buy</button>
+            <button class="cart-btn" onclick="show('ca6','qun6')">Add to cart</button>
+        </div>
+        
+        <div class="bike-card" id="div26">
+            <img src="bikes types7.jpeg" alt="KTM Duke 200">
+            <p class="bike-name">KTM Duke 200</p>
+            <p>Mileage: 35 kmpl</p>
+            <p class="bike-price" id="bike7">Price: Rs 1,97,000</p>
+            <button class="buy-btn" onclick="sc1()">Buy</button>
+            <button class="cart-btn" onclick="show('ca7','qun7')">Add to cart</button>
+        </div>
+        
+        <div class="bike-card" id="div27">
+            <img src="bikes types8.jpeg" alt="Suzuki Gixxer SF250">
+            <p class="bike-name">Suzuki Gixxer SF250</p>
+            <p>Mileage: 35-40 kmpl</p>
+            <p class="bike-price" id="bike8">Price: Rs 1,94,000</p>
+            <button class="buy-btn" onclick="sc1()">Buy</button>
+            <button class="cart-btn" onclick="show('ca8','qun8')">Add to cart</button>
+        </div>
+        
+        <div class="bike-card" id="div28">
+            <img src="bikes types9.jpeg" alt="TVS Raider">
+            <p class="bike-name">TVS Raider</p>
+            <p>Mileage: 71.94 Kmpl</p>
+            <p class="bike-price" id="bike9">Price: Rs 2,90,300</p>
+            <button class="buy-btn" onclick="sc1()">Buy</button>
+            <button class="cart-btn" onclick="show('ca9','qun9')">Add to cart</button>
+        </div>
+    </div>
+
+    <div id="ban">
+        <p style="text-align:center; font-weight:bold;font-size: xx-large;line-height: 5px;color: white; text-shadow: 0 0 10px #00f3ff;">Cart</p>
+        <div id="reign">
+            <div class="cart-item" id="ca1"><p style="margin-left: 10px;font-size: 16px;font-weight: bolder;color: white; width: 250px;">Royal Enfield Interceptor 650</p><button class="plus" id="pl1" onclick="add('qun1')">+</button><input type="text" readonly id="qun1" class="quan" value="0"><button class="min" id="mi1"  onclick="subt('qun1','ca1')">-</button></div>
+            <div class="cart-item" id="ca2"><p style="margin-left: 10px;font-size: 16px;font-weight: bolder;color: white; width: 250px;">Kawasaki Z650</p><button class="plus" id="pl2" onclick="add('qun2')">+</button><input type="text" readonly id="qun2" class="quan" value="0"><button class="min" id="mi2"  onclick="subt('qun2','ca2')">-</button></div>
+            <div class="cart-item" id="ca3"><p style="margin-left: 10px;font-size: 16px;font-weight: bolder;color: white; width: 250px;">TVS Apache RR 310</p><button class="plus" id="pl3" onclick="add('qun3')">+</button><input type="text" readonly id="qun3" class="quan" value="0"><button class="min" id="mi3"  onclick="subt('qun3','ca3')">-</button></div>
+            <div class="cart-item" id="ca4"><p style="margin-left: 10px;font-size: 16px;font-weight: bolder;color: white; width: 250px;">Bajaj Pulsar NS200</p><button class="plus" id="pl4" onclick="add('qun4')">+</button><input type="text" readonly id="qun4" class="quan" value="0"><button class="min" id="mi4"  onclick="subt('qun4','ca4')">-</button></div>
+            <div class="cart-item" id="ca5"><p style="margin-left: 10px;font-size: 16px;font-weight: bolder;color: white; width: 250px;">Honda CB300R</p><button class="plus" id="pl5" onclick="add('qun5')">+</button><input type="text" readonly id="qun5" class="quan" value="0"><button class="min" id="mi5"  onclick="subt('qun5','ca5')">-</button></div>
+            <div class="cart-item" id="ca6"><p style="margin-left: 10px;font-size: 16px;font-weight: bolder;color: white; width: 250px;">Yamaha FZ-S</p><button class="plus" id="pl6" onclick="add('qun6')">+</button><input type="text" readonly id="qun6" class="quan" value="0"><button class="min" id="mi6"  onclick="subt('qun6','ca6')">-</button></div>
+            <div class="cart-item" id="ca7"><p style="margin-left: 10px;font-size: 16px;font-weight: bolder;color: white; width: 250px;">KTM Duke 200</p><button class="plus" id="pl7" onclick="add('qun7')">+</button><input type="text" readonly id="qun7" class="quan" value="0"><button class="min" id="mi7"  onclick="subt('qun7','ca7')">-</button></div>
+            <div class="cart-item" id="ca8"><p style="margin-left: 10px;font-size: 16px;font-weight: bolder;color: white; width: 250px;">Suzuki Gixxer SF250</p><button class="plus" id="pl8" onclick="add('qun8')">+</button><input type="text" readonly id="qun8" class="quan" value="0"><button class="min" id="mi8"  onclick="subt('qun8','ca8')">-</button></div>
+            <div class="cart-item" id="ca9"><p style="margin-left: 10px;font-size: 16px;font-weight: bolder;color: white; width: 250px;">TVS Raider</p><button class="plus" id="pl9" onclick="add('qun9')">+</button><input type="text" readonly id="qun9" class="quan" value="0"><button class="min" id="mi9"  onclick="subt('qun9','ca9')">-</button></div>
+        </div>
+        <div id="top"><p style="height: 20px;margin-top: 3px;color: white;" id="babo">Total: Rs 0</p></div>
+        <div class="cart-buttons">
+            <button class="cart-action-btn" onclick="sc2()">Buy</button>
+            <button onclick="hc0()" class="cart-action-btn">Close</button>
+        </div>
+    </div>
+
+    <div id="upi">
+        <div id="utop"><p style="font-size: x-large;font-weight: bolder;">State Bank of India<img src="ubi1.png" style="width: 30px;height: 20px;margin-left: 150px;"></p></div>
+        <label style="margin-top: 20px;margin-left: 20px;">Enter CCI number:</label><input type="text" style="width: 200px;margin-left: 10px;margin-top: 10px;" maxlength="16" pattern=".{16}" id="ac16"><br>
+        <p id="reds1" class="reds"></p>
+        <label style="margin-top: 0px;margin-left: 20px;">Enter pin number:</label><input type="password" maxlength="4" style="width: 200px;margin-left: 10px;margin-top: 0px;" pattern=".{4}" id="pi4"><br>
+        <p id="reds2" class="reds"></p>
+        <button id="subs" onclick="subsc()">Submit</button><button id="cl1" onclick="hc1()">Close</button>
+    </div>
+
+    <script>
+        let tat = 0;
+        
+        function Menu() {
+            let qw = document.getElementById("div789");
+            qw.classList.add("act");
+            document.body.style.overflow = "hidden";
+        }
+
+        function bar() {
+            let qw = document.getElementById("div789");
+            qw.classList.remove("act");
+            document.body.style.overflow = "auto";
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('div789');
+            const button = document.getElementById('but');
+            
+            if (!menu.contains(event.target) && event.target !== button) {
+                menu.classList.remove("act");
+                document.body.style.overflow = "auto";
+            }
+        });
+
+        function sc0() {
+            document.getElementById("ban").style.display = "block";
+        }
+
+        function hc0() {
+            document.getElementById("ban").style.display = "none";
+        }
+
+        function hc1() {
+            document.getElementById("upi").style.display = "none";
+        }
+        
+        function sc1() {
+            document.getElementById("upi").style.display = "block";
+        }
+
+        let bike1 = 310000;
+        let bike2 = 650000;
+        let bike3 = 240000;
+        let bike4 = 140000;
+        let bike5 = 250000;
+        let bike6 = 116000;
+        let bike7 = 197000;
+        let bike8 = 194000;
+        let bike9 = 290300;
+
+        function show(x, o) {
+            let pop = document.getElementById(x);
+            if (pop) {
+                pop.style.display = "flex";
+                document.getElementById(o).value = "1";
+            }
+            Total();
+        }
+
+        function add(y) {
+            let ter = document.getElementById(y);
+            let nnn = parseInt(document.getElementById(y).value);
+            if (ter) {
+                ter.value = nnn + 1;
+            }
+            if (nnn > 4) {
+                ter.value = "5";
+            }
+            Total();
+        }
+
+        function subt(z, l) {
+            let rep = document.getElementById(z);
+            let mov = document.getElementById(l);
+            let npn = parseInt(document.getElementById(z).value);
+            if (rep) {
+                rep.value = npn - 1;
+            }
+            if (npn < 2) {
+                mov.style.display = "none";
+                rep.value = "0";
+            }
+            Total();
+        }
+
+        function Total() {
+            let np1 = parseInt(document.getElementById("qun1").value);
+            let np2 = parseInt(document.getElementById("qun2").value);
+            let np3 = parseInt(document.getElementById("qun3").value);
+            let np4 = parseInt(document.getElementById("qun4").value);
+            let np5 = parseInt(document.getElementById("qun5").value);
+            let np6 = parseInt(document.getElementById("qun6").value);
+            let np7 = parseInt(document.getElementById("qun7").value);
+            let np8 = parseInt(document.getElementById("qun8").value);
+            let np9 = parseInt(document.getElementById("qun9").value);
+
+            let ds1 = bike1 * np1;
+            let ds2 = bike2 * np2;
+            let ds3 = bike3 * np3;
+            let ds4 = bike4 * np4;
+            let ds5 = bike5 * np5;
+            let ds6 = bike6 * np6;
+            let ds7 = bike7 * np7;
+            let ds8 = bike8 * np8;
+            let ds9 = bike9 * np9;
+
+            tat = ds1 + ds2 + ds3 + ds4 + ds5 + ds6 + ds7 + ds8 + ds9;
+
+            document.getElementById("babo").innerHTML = "Total: Rs " + tat;
+        }
+
+        function subsc() {
+            let a = document.getElementById("ac16").value;
+            let b = document.getElementById("pi4").value;
+
+            let x = document.getElementById("reds1");
+            let y = document.getElementById("reds2");
+
+            x.innerHTML = "";
+            y.innerHTML = "";
+
+            if (a.length != 16 || isNaN(a)) {
+                x.innerHTML = "Invalid UPI Account Number";
+            }
+            else {
+                x.innerHTML = "";
+            }
+
+            if (b.length != 4 || isNaN(b)) {
+                y.innerHTML = "Invalid PIN";
+            }
+            else {
+                y.innerHTML = "";
+            }
+            if (a.length == 16 && b.length == 4 && !isNaN(a) && !isNaN(b)) {
+                document.getElementById("ac16").value = "";
+                document.getElementById("pi4").value = "";
+                alert("Payment Successful!");
+                hc1();
+                hc0();
+                
+                // Reset cart
+                for (let i = 1; i <= 9; i++) {
+                    document.getElementById("qun" + i).value = "0";
+                    document.getElementById("ca" + i).style.display = "none";
+                }
+                document.getElementById("babo").innerHTML = "Total: Rs 0";
+                tat = 0;
+            }
+        }
+
+        function sc2() {
+            if (tat > 0) {
+                sc1();
+            }
+            else {
+                alert("Add something to cart !!!");
+            }
+        }
+    </script>
+</body>
+</html>

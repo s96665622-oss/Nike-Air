@@ -1,0 +1,477 @@
+<!doctype html>
+<html>
+<head>
+    <title>Sign Up - VeloLux</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-image: url("Bike background image11.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #div1 {
+            width: 100vw;
+            height: 70px;
+            background-color: rgba(28, 28, 28, 0.9);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #but {
+            background-color: transparent;
+            border: 2px solid #ff073a;
+            color: #ff073a;
+            border-radius: 20px;
+            padding: 5px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            text-shadow: 0 0 5px #ff073a;
+            box-shadow: 0 0 10px #c4173a;
+        }
+
+        #but:hover {
+            background-color: #ff073a;
+            color: #0f0f1a;
+            box-shadow: 0 0 15px #ff073a;
+            transform: scale(1.05);
+        }
+
+        #div789 {
+            width: 300px;
+            height: 100vh;
+            background-color: rgba(20, 20, 30, 0.98);
+            position: fixed;
+            top: 0;
+            left: -300px;
+            transition: left 0.5s ease;
+            z-index: 100;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 5px 0 20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            border-right: 2px solid #ff073a;
+        }
+
+        #div789.act {
+            left: 0;
+        }
+
+        #div789 h3 {
+            text-align: center;
+            color: #ff073a;
+            font-size: 24px;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 7, 58, 0.3);
+            text-shadow: 0 0 10px #ff073a;
+        }
+
+        #b1, #b2, #b3, #b4, #b5 {
+            width: 100%;
+            height: 50px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            color: #f0f0f0;
+            font-weight: bold;
+            text-align: left;
+            padding-left: 20px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #b1:hover, #b2:hover, #b3:hover, #b4:hover, #b5:hover {
+            background-color: rgba(255, 7, 58, 0.1);
+            color: #ff073a;
+            padding-left: 30px;
+            text-shadow: 0 0 8px #ff073a;
+        }
+
+        #b6 {
+            width: 50px;
+            height: 50px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            color: #f0f0f0;
+            font-weight: bolder;
+            font-size: 30px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        #b6:hover {
+            color: #ff073a;
+            transform: rotate(180deg);
+            text-shadow: 0 0 8px #ff073a;
+        }
+
+        #div2 {
+            margin-left: 15px;
+        }
+
+        #div3 {
+            margin-left: 560px;
+        }
+
+        #div4, #div5, #div6, #div7 {
+            margin-left: 60px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .nav-link:hover {
+            color: crimson;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+
+
+        .logo {
+            width: 35px;
+            height: 35px;
+            transition: transform 0.3s ease;
+            border-radius: 50%;
+        }
+
+        .logo:hover {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        #div789 h3 {
+            text-align: center;
+            color: #ff073a;
+            font-size: 24px;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 7, 58, 0.3);
+            text-shadow: 0 0 10px #ff073a;
+        }
+
+        #div22 {
+            width: 450px;
+            background-color: rgba(255, 255, 255, 0.95);
+            margin-top: 120px;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out;
+            border-left: 5px solid crimson;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .signup-title {
+            color: crimson;
+            font-size: 32px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+
+        .signup-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background: crimson;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: crimson;
+            box-shadow: 0 0 0 3px rgba(220, 20, 60, 0.2);
+            outline: none;
+        }
+
+        .error-message {
+            color: #d9534f;
+            font-size: 14px;
+            margin-top: 5px;
+            height: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: crimson;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #a31621;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .login-link a {
+            color: crimson;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .password-strength {
+            height: 5px;
+            background: #eee;
+            border-radius: 5px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .strength-meter {
+            height: 100%;
+            width: 0;
+            background: #d9534f;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="div789">
+        <h3>VeloLux</h3>
+        <button id="b1" onclick="window.location.href='Bike home.html';">Home</button>
+        <button id="b2" onclick="window.location.href='bike about us.html';">About Us</button>
+        <button id="b3" onclick="window.location.href='Bike types.html';">Bikes</button>
+        <button id="b4" onclick="window.location.href='bike contact.html';">Contact</button>
+        <button id="b5" onclick="window.location.href='bikes login.html';">Login</button>
+        <button id="b6" onclick="bar()">×</button>
+    </div>
+
+    <div id="div1">
+        <button id="but" onclick="Menu()">☰ Menu</button>
+        <div id="div2">
+            <img src="bogo1.jpeg" class="logo" alt="VeloLux Logo">
+        </div>
+        <div id="div3">
+            <a href="Bike home.html" class="nav-link">Home</a>
+        </div>
+        <div id="div4">
+            <a href="bike about us.html" class="nav-link">About Us</a>
+        </div>
+        <div id="div5">
+            <a href="Bike types.html" class="nav-link">Bikes</a>
+        </div>
+        <div id="div6">
+            <a href="bike contact.html" class="nav-link">Contact</a>
+        </div>
+        <div id="div7">
+            <a href="bikes login.html" class="nav-link">Login</a>
+        </div>
+    </div>
+
+    <div id="div22">
+        <h1 class="signup-title">Create Account</h1>
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="Name" placeholder="Enter your full name">
+            <p id="p1" class="error-message"></p>
+        </div>
+        <div class="form-group">
+            <label for="pass">Password</label>
+            <input type="password" id="pass" name="Password" placeholder="Create a password (min 8 characters)" oninput="checkPasswordStrength()">
+            <div class="password-strength">
+                <div class="strength-meter" id="strengthMeter"></div>
+            </div>
+            <p id="p2" class="error-message"></p>
+        </div>
+        <div class="form-group">
+            <label for="cpass">Confirm Password</label>
+            <input type="password" id="cpass" name="Password" placeholder="Confirm your password">
+            <p id="p3" class="error-message"></p>
+        </div>
+        <button onclick="validateForm()" class="submit-btn">Sign Up</button>
+        <div class="login-link">
+            <p>Already have an account? <a href="bikes login.html">Log in</a></p>
+        </div>
+    </div>
+
+    <script>
+        function Menu() {
+            let q = document.getElementById("div789");
+            q.classList.add("act");
+            document.body.style.overflow = "hidden";
+        }
+
+        function bar() {
+            let q = document.getElementById("div789");
+            q.classList.remove("act");
+            document.body.style.overflow = "auto";
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('div789');
+            const button = document.getElementById('but');
+            
+            if (!menu.contains(event.target) && event.target !== button) {
+                menu.classList.remove("act");
+                document.body.style.overflow = "auto";
+            }
+        });
+
+        function checkPasswordStrength() {
+            const password = document.getElementById("pass").value;
+            const strengthMeter = document.getElementById("strengthMeter");
+            let strength = 0;
+            
+            if (password.length >= 8) strength += 1;
+            if (password.match(/[a-z]/)) strength += 1;
+            if (password.match(/[A-Z]/)) strength += 1;
+            if (password.match(/[0-9]/)) strength += 1;
+            if (password.match(/[^a-zA-Z0-9]/)) strength += 1;
+            
+            // Update strength meter
+            const width = strength * 20;
+            strengthMeter.style.width = `${width}%`;
+            
+            // Update color based on strength
+            if (strength <= 1) {
+                strengthMeter.style.backgroundColor = "#d9534f"; // Red
+            } else if (strength <= 3) {
+                strengthMeter.style.backgroundColor = "#f0ad4e"; // Yellow
+            } else {
+                strengthMeter.style.backgroundColor = "#5cb85c"; // Green
+            }
+        }
+
+        function validateForm() {
+            const name = document.getElementById("name").value;
+            const password = document.getElementById("pass").value;
+            const confirmPassword = document.getElementById("cpass").value;
+            const nameError = document.getElementById("p1");
+            const passwordError = document.getElementById("p2");
+            const confirmError = document.getElementById("p3");
+            let isValid = true;
+
+            // Clear previous errors
+            nameError.textContent = "";
+            passwordError.textContent = "";
+            confirmError.textContent = "";
+
+            // Validate name
+            if (name.length < 5) {
+                nameError.textContent = "Name must be at least 5 characters";
+                isValid = false;
+            }
+
+            // Validate password
+            if (password.length < 8) {
+                passwordError.textContent = "Password must be at least 8 characters";
+                isValid = false;
+            }
+
+            // Validate password match
+            if (password !== confirmPassword) {
+                confirmError.textContent = "Passwords do not match";
+                isValid = false;
+            }
+
+            // If form is valid, you would typically submit it
+            if (isValid) {
+                alert("Account created successfully! Redirecting to login...");
+                // Here you would typically submit the form or redirect
+                window.location.href = "bikes login.html";
+            }
+        }
+
+        // Add event listener for Enter key
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                validateForm();
+            }
+        });
+    </script>
+</body>
+</html>

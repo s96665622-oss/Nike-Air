@@ -1,0 +1,421 @@
+<!doctype html>
+<html>
+<head>
+    <title>Contact Us - VeloLux</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-image: url("Bike background image.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #div1 {
+            width: 100vw;
+            height: 70px;
+            background-color: rgba(28, 28, 28, 0.9);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #but {
+            background-color: transparent;
+            border: 2px solid #ff073a;
+            color: #ff073a;
+            border-radius: 20px;
+            padding: 5px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            text-shadow: 0 0 5px #ff073a;
+            box-shadow: 0 0 10px #c4173a;
+        }
+
+        #but:hover {
+            background-color: #ff073a;
+            color: #0f0f1a;
+            box-shadow: 0 0 15px #ff073a;
+            transform: scale(1.05);
+        }
+
+        #div789 {
+            width: 300px;
+            height: 100vh;
+            background-color: rgba(20, 20, 30, 0.98);
+            position: fixed;
+            top: 0;
+            left: -300px;
+            transition: left 0.5s ease;
+            z-index: 100;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 5px 0 20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            border-right: 2px solid #ff073a;
+        }
+
+        #div789.act {
+            left: 0;
+        }
+
+        #div789 h3 {
+            text-align: center;
+            color: #ff073a;
+            font-size: 24px;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 7, 58, 0.3);
+            text-shadow: 0 0 10px #ff073a;
+        }
+
+        #b1, #b2, #b3, #b4, #b5 {
+            width: 100%;
+            height: 50px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            color: #f0f0f0;
+            font-weight: bold;
+            text-align: left;
+            padding-left: 20px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #b1:hover, #b2:hover, #b3:hover, #b4:hover, #b5:hover {
+            background-color: rgba(255, 7, 58, 0.1);
+            color: #ff073a;
+            padding-left: 30px;
+            text-shadow: 0 0 8px #ff073a;
+        }
+
+        #b6 {
+            width: 50px;
+            height: 50px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            color: #f0f0f0;
+            font-weight: bolder;
+            font-size: 30px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        #b6:hover {
+            color: #ff073a;
+            transform: rotate(180deg);
+            text-shadow: 0 0 8px #ff073a;
+        }
+        #div2 {
+            margin-left: 15px;
+        }
+
+        #div3 {
+            margin-left: 560px;
+        }
+
+        #div4, #div5, #div6, #div7 {
+            margin-left: 60px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .nav-link:hover {
+            color: crimson;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+
+        .logo {
+            width: 35px;
+            height: 35px;
+            transition: transform 0.3s ease;
+            border-radius: 50%;
+        }
+
+        .logo:hover {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        #div789 h3 {
+            text-align: center;
+            color: crimson;
+            font-size: 24px;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        #div1000 {
+            width: 750px;
+            background-color: rgba(255, 255, 255, 0.95);
+            margin-top: 150px;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out;
+            border-left: 5px solid crimson;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-title {
+            color: crimson;
+            font-size: 32px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .contact-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background: crimson;
+        }
+
+        .contact-text {
+            font-size: 17px;
+            color: #444;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .contact-icon {
+            margin-right: 15px;
+            color: crimson;
+            font-size: 24px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .contact-form {
+            margin-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: crimson;
+            box-shadow: 0 0 0 3px rgba(220, 20, 60, 0.2);
+            outline: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: crimson;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #a31621;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div id="div789">
+        <h3>VeloLux</h3>
+        <button id="b1" onclick="window.location.href='Bike home.html';">Home</button>
+        <button id="b2" onclick="window.location.href='bike about us.html';">About Us</button>
+        <button id="b3" onclick="window.location.href='Bike types.html';">Bikes</button>
+        <button id="b4" onclick="window.location.href='bike contact.html';">Contact</button>
+        <button id="b5" onclick="window.location.href='bikes login.html';">Login</button>
+        <button id="b6" onclick="bar()">×</button>
+    </div>
+
+    <div id="div1">
+        <button id="but" onclick="Menu()">☰ Menu</button>
+        <div id="div2">
+            <img src="bogo1.jpeg" class="logo" alt="VeloLux Logo">
+        </div>
+        <div id="div3">
+            <a href="Bike home.html" class="nav-link">Home</a>
+        </div>
+        <div id="div4">
+            <a href="bike about us.html" class="nav-link">About Us</a>
+        </div>
+        <div id="div5">
+            <a href="Bike types.html" class="nav-link">Bikes</a>
+        </div>
+        <div id="div6">
+            <a href="bike contact.html" class="nav-link">Contact</a>
+        </div>
+        <div id="div7">
+            <a href="bikes login.html" class="nav-link">Login</a>
+        </div>
+    </div>
+
+    <div id="div1000">
+        <h1 class="contact-title">Contact Us</h1>
+        <p class="contact-text">We're here to help you every step of the way. Whether you have questions about our bikes, need help choosing the right model, or want to know more about our services, our team is ready to assist. Reach out to us via phone, email, or our contact form, and we'll get back to you as soon as possible. At VeloLux, your satisfaction and riding experience are our top priorities.</p>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                <div>+91 0004567812</div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <div>velolux456@gmail.com</div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div>123 Rider's Street, Motorville, India</div>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h2 style="color: #333; font-size: 24px; margin-bottom: 20px;">Send us a message</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="contactName">Your Name</label>
+                    <input type="text" id="contactName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Your Email</label>
+                    <input type="email" id="contactEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">Your Message</label>
+                    <textarea id="contactMessage" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function Menu() {
+            let q = document.getElementById("div789");
+            q.classList.add("act");
+            document.body.style.overflow = "hidden";
+        }
+
+        function bar() {
+            let q = document.getElementById("div789");
+            q.classList.remove("act");
+            document.body.style.overflow = "auto";
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('div789');
+            const button = document.getElementById('but');
+            
+            if (!menu.contains(event.target) && event.target !== button) {
+                menu.classList.remove("act");
+                document.body.style.overflow = "auto";
+            }
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

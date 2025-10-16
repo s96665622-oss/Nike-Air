@@ -1,0 +1,345 @@
+<!doctype html>
+<html>
+<head>
+    <title>VeloLux</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-image: url("Bike background image7.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        #div100 {
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 500px;
+            height: 280px;
+            margin: 150px auto 0 auto;
+            border: 3px solid red;
+            border-radius: 10px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(20px);
+        }
+
+        #cart {
+            width: 300px;
+            height: 50px;
+            border: none;
+            background-color: #1c1c1c;
+            cursor: pointer;
+            color: white;
+            font-weight: bolder;
+            transition: all 0.3s ease;
+        }
+
+        #cart:hover {
+            background-color: white;
+            color: #1c1c1c;
+            transform: scale(1.05);
+        }
+
+        #div1000 {
+            width: 480px;
+            height: 280px;
+            color: white;
+            text-align: center;
+            margin: -280px auto 0 auto;
+            position: relative;
+            z-index: 2;
+            animation: slideIn 1s ease-out forwards;
+            opacity: 0;
+            transform: translateX(-100px);
+            padding: 10px;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        #div1000 h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        #div1000 p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        #div1 {
+            width: 100vw;
+            height: 60px;
+            background-color: rgba(28, 28, 28, 0.8);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #but {
+            background-color: transparent;
+            border: 2px solid #ff073a;
+            color: #ff073a;
+            border-radius: 20px;
+            padding: 5px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            text-shadow: 0 0 5px #ff073a;
+            box-shadow: 0 0 10px #c4173a;
+        }
+
+        #but:hover {
+            background-color: #ff073a;
+            color: #0f0f1a;
+            box-shadow: 0 0 15px #ff073a;
+            transform: scale(1.05);
+        }
+
+        #div789 {
+            width: 300px;
+            height: 100vh;
+            background-color: rgba(20, 20, 30, 0.98);
+            position: fixed;
+            top: 0;
+            left: -300px;
+            transition: left 0.5s ease;
+            z-index: 100;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 5px 0 20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            border-right: 2px solid #ff073a;
+        }
+
+        #div789.act {
+            left: 0;
+        }
+
+        #div789 h3 {
+            text-align: center;
+            color: #ff073a;
+            font-size: 24px;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 7, 58, 0.3);
+            text-shadow: 0 0 10px #ff073a;
+        }
+
+        #b1, #b2, #b3, #b4, #b5 {
+            width: 100%;
+            height: 50px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            color: #f0f0f0;
+            font-weight: bold;
+            text-align: left;
+            padding-left: 20px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #b1:hover, #b2:hover, #b3:hover, #b4:hover, #b5:hover {
+            background-color: rgba(255, 7, 58, 0.1);
+            color: #ff073a;
+            padding-left: 30px;
+            text-shadow: 0 0 8px #ff073a;
+        }
+
+        #b6 {
+            width: 50px;
+            height: 50px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            color: #f0f0f0;
+            font-weight: bolder;
+            font-size: 30px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        #b6:hover {
+            color: #ff073a;
+            transform: rotate(180deg);
+            text-shadow: 0 0 8px #ff073a;
+        }
+
+        #div2 {
+            margin-left: 15px;
+        }
+
+        #div3 {
+            margin-left: 560px;
+        }
+
+        #div4, #div5, #div6, #div7 {
+            margin-left: 60px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .nav-link:hover {
+            color: crimson;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        
+
+        #bo12 {
+            width: 150px;
+            height: 40px;
+            background-color: rgba(209, 68, 209, 0.8);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #bo12:hover {
+            background-color: darkmagenta;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        #bo12:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: rotate(15deg);
+        }
+
+        #div789 h3 {
+            text-align: center;
+            color: crimson;
+            font-size: 24px;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="div789">
+        <h3>VeloLux</h3>
+        <button id="b1" onclick="window.location.href='Bike home.html';">Home</button>
+        <button id="b2" onclick="window.location.href='bike about us.html';">About Us</button>
+        <button id="b3" onclick="window.location.href='Bike types.html';">Bikes</button>
+        <button id="b4" onclick="window.location.href='bike contact.html';">Contact</button>
+        <button id="b5" onclick="window.location.href='bikes login.html';">Login</button>
+        <button id="b6" onclick="bar()">×</button>
+    </div>
+
+    <div id="div1">
+        <button id="but" onclick="Menu()">☰ Menu</button>
+        <div id="div2">
+            <img src="bogo1.jpeg" class="logo" alt="VeloLux Logo">
+        </div>
+        <div id="div3">
+            <a href="Bike home.html" class="nav-link">Home</a>
+        </div>
+        <div id="div4">
+            <a href="bike about us.html" class="nav-link">About Us</a>
+        </div>
+        <div id="div5">
+            <a href="Bike types.html" class="nav-link">Bikes</a>
+        </div>
+        <div id="div6">
+            <a href="bike contact.html" class="nav-link">Contact</a>
+        </div>
+        <div id="div7">
+            <a href="bikes login.html" class="nav-link">Login</a>
+        </div>
+    </div>
+
+    <div id="div100"></div>
+
+    <div id="div1000">
+        <h3>Welcome to Velolux – Your Ultimate Destination for Motorbikes</h3>
+        <p>At Velolux, we offer a wide range of motorbikes to suit every rider's style and need. Whether you're a seasoned rider looking for performance and speed or a beginner searching for your first bike, we have something for everyone. From sleek sport bikes and rugged cruisers to powerful touring motorcycles and eco-friendly electric models, our collection is designed to give you the freedom to ride your way. Shop with confidence and explore top-quality bikes from trusted brands, all in one place – only at Velolux.</p>
+        <button onclick="window.location.href='Bike types.html';" id="bo12">Explore Bikes</button>
+    </div>
+
+    <script>
+        function Menu() {
+            let q = document.getElementById("div789");
+            q.classList.add("act");
+            document.body.style.overflow = "hidden";
+        }
+
+        function bar() {
+            let q = document.getElementById("div789");
+            q.classList.remove("act");
+            document.body.style.overflow = "auto";
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('div789');
+            const button = document.getElementById('but');
+            
+            if (!menu.contains(event.target) && event.target !== button) {
+                menu.classList.remove("act");
+                document.body.style.overflow = "auto";
+            }
+        });
+
+        // Animation for elements when scrolling
+        document.addEventListener('DOMContentLoaded', function() {
+            // Trigger the animation for the content div
+            setTimeout(() => {
+                document.getElementById('div1000').style.animation = 'slideIn 1s ease-out forwards';
+            }, 300);
+        });
+    </script>
+</body>
+</html>

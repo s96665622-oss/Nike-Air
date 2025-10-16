@@ -1,0 +1,335 @@
+<!doctype html>
+<html>
+<head>
+    <title>About Us - VeloLux</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-image: url("Bike background image5.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        #div1200 {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 100px;
+            padding: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #div2200 {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+            border-left: 5px solid crimson;
+        }
+
+        #div2200:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        #div1 {
+            width: 100vw;
+            height: 70px;
+            background-color: rgba(28, 28, 28, 0.9);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+        }
+
+#but {
+            background-color: transparent;
+            border: 2px solid #ff073a;
+            color: #ff073a;
+            border-radius: 20px;
+            padding: 5px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            text-shadow: 0 0 5px #ff073a;
+            box-shadow: 0 0 10px #c4173a;
+        }
+
+        #but:hover {
+            background-color: #ff073a;
+            color: #0f0f1a;
+            box-shadow: 0 0 15px #ff073a;
+            transform: scale(1.05);
+        }
+
+        #div789 {
+            width: 300px;
+            height: 100vh;
+            background-color: rgba(20, 20, 30, 0.98);
+            position: fixed;
+            top: 0;
+            left: -300px;
+            transition: left 0.5s ease;
+            z-index: 100;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 5px 0 20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            border-right: 2px solid #ff073a;
+        }
+
+        #div789.act {
+            left: 0;
+        }
+
+        #div789 h3 {
+            text-align: center;
+            color: #ff073a;
+            font-size: 24px;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 7, 58, 0.3);
+            text-shadow: 0 0 10px #ff073a;
+        }
+
+        #b1, #b2, #b3, #b4, #b5 {
+            width: 100%;
+            height: 50px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            color: #f0f0f0;
+            font-weight: bold;
+            text-align: left;
+            padding-left: 20px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #b1:hover, #b2:hover, #b3:hover, #b4:hover, #b5:hover {
+            background-color: rgba(255, 7, 58, 0.1);
+            color: #ff073a;
+            padding-left: 30px;
+            text-shadow: 0 0 8px #ff073a;
+        }
+
+        #b6 {
+            width: 50px;
+            height: 50px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            color: #f0f0f0;
+            font-weight: bolder;
+            font-size: 30px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        #b6:hover {
+            color: #ff073a;
+            transform: rotate(180deg);
+            text-shadow: 0 0 8px #ff073a;
+        }
+
+
+        #div2 {
+            margin-left: 15px;
+        }
+
+        #div3 {
+            margin-left: 560px;
+        }
+
+        #div4, #div5, #div6, #div7 {
+            margin-left: 60px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .nav-link:hover {
+            color: crimson;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+
+        .logo {
+            width: 35px;
+            height: 35px;
+            transition: transform 0.3s ease;
+            border-radius: 50%;
+        }
+
+        .logo:hover {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+
+        h2 {
+            margin-top: 0;
+            color: crimson;
+            font-size: 32px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background: crimson;
+        }
+
+        p {
+            font-size: 17px;
+            color: #444;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        strong {
+            color: #222;
+            font-weight: 600;
+        }
+
+        .highlight {
+            color: crimson;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="div789">
+        <h3>VeloLux</h3>
+        <button id="b1" onclick="window.location.href='Bike home.html';">Home</button>
+        <button id="b2" onclick="window.location.href='bike about us.html';">About Us</button>
+        <button id="b3" onclick="window.location.href='Bike types.html';">Bikes</button>
+        <button id="b4" onclick="window.location.href='bike contact.html';">Contact</button>
+        <button id="b5" onclick="window.location.href='bikes login.html';">Login</button>
+        <button id="b6" onclick="bar()">×</button>
+    </div>
+
+    <div id="div1">
+        <button id="but" onclick="Menu()">☰ Menu</button>
+        <div id="div2">
+            <img src="bogo1.jpeg" class="logo" alt="VeloLux Logo">
+        </div>
+        <div id="div3">
+            <a href="Bike home.html" class="nav-link">Home</a>
+        </div>
+        <div id="div4">
+            <a href="bike about us.html" class="nav-link">About Us</a>
+        </div>
+        <div id="div5">
+            <a href="Bike types.html" class="nav-link">Bikes</a>
+        </div>
+        <div id="div6">
+            <a href="bike contact.html" class="nav-link">Contact</a>
+        </div>
+        <div id="div7">
+            <a href="bikes login.html" class="nav-link">Login</a>
+        </div>
+    </div>
+
+    <div id="div1200">
+        <div id="div2200">
+            <h2>About VeloLux</h2>
+            <p>
+                Welcome to <strong>VeloLux</strong> – your trusted source for <span class="highlight">high-performance motor bikes</span> built for speed, reliability, and style.  
+            </p>
+            <p>
+                We specialize in premium motorbikes that deliver powerful performance for city streets, open highways, and everything in between.  
+            </p>
+            <p>
+                Whether you're a daily commuter, a weekend rider, or a motorcycle enthusiast, VeloLux has the perfect bike to match your lifestyle.  
+            </p>
+            <p>
+                Our mission is to bring you <span class="highlight">cutting-edge design</span>, <span class="highlight">advanced technology</span>, and <span class="highlight">unmatched riding experiences</span> — all backed by expert support and service.  
+            </p>
+            <p>
+                Fuel your passion. Ride with confidence. <span class="highlight">Ride with VeloLux.</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function Menu() {
+            let q = document.getElementById("div789");
+            q.classList.add("act");
+            document.body.style.overflow = "hidden";
+        }
+
+        function bar() {
+            let q = document.getElementById("div789");
+            q.classList.remove("act");
+            document.body.style.overflow = "auto";
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('div789');
+            const button = document.getElementById('but');
+            
+            if (!menu.contains(event.target) && event.target !== button) {
+                menu.classList.remove("act");
+                document.body.style.overflow = "auto";
+            }
+        });
+
+        // Add animation to paragraphs
+        document.addEventListener('DOMContentLoaded', function() {
+            const paragraphs = document.querySelectorAll('#div2200 p');
+            paragraphs.forEach((p, index) => {
+                p.style.opacity = '0';
+                p.style.transform = 'translateX(-20px)';
+                p.style.transition = `all 0.5s ease ${index * 0.2}s`;
+                setTimeout(() => {
+                    p.style.opacity = '1';
+                    p.style.transform = 'translateX(0)';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
